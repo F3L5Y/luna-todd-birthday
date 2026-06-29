@@ -724,6 +724,61 @@
       box-shadow: 0 12px 28px rgba(0,0,0,0.35);
     }
 
+    .luna-rsvp-button,
+    .rsvp-button,
+    .mobile-rsvp {
+      animation:
+        rsvpFlash 2.2s infinite ease-in-out,
+        rsvpPulse 1.1s infinite ease-in-out;
+    }
+
+    @keyframes rsvpFlash {
+      0% {
+        background: linear-gradient(135deg, #ff74ad, #d94181 55%, #dd7830);
+        box-shadow:
+          0 7px 0 #8d2e55,
+          0 0 22px rgba(255, 116, 173, 0.8);
+      }
+
+      25% {
+        background: linear-gradient(135deg, #8ed8f3, #b98bea 55%, #ff74ad);
+        box-shadow:
+          0 7px 0 #5a4aa8,
+          0 0 24px rgba(142, 216, 243, 0.85);
+      }
+
+      50% {
+        background: linear-gradient(135deg, #ffe66d, #ff9f1c 55%, #ff74ad);
+        box-shadow:
+          0 7px 0 #a75a12,
+          0 0 26px rgba(255, 230, 109, 0.9);
+      }
+
+      75% {
+        background: linear-gradient(135deg, #9cffac, #35c96f 55%, #8ed8f3);
+        box-shadow:
+          0 7px 0 #1d7a42,
+          0 0 24px rgba(156, 255, 172, 0.85);
+      }
+
+      100% {
+        background: linear-gradient(135deg, #ff74ad, #d94181 55%, #dd7830);
+        box-shadow:
+          0 7px 0 #8d2e55,
+          0 0 22px rgba(255, 116, 173, 0.8);
+      }
+    }
+
+    @keyframes rsvpPulse {
+      0%, 100% {
+        scale: 1;
+      }
+
+      50% {
+        scale: 1.04;
+      }
+    }
+
     .floating-decor {
       position: absolute;
       inset: 0;
@@ -890,7 +945,12 @@
       <span>★</span>
     </div>
 
-    <a class="mobile-rsvp" href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845">
+    <a
+      class="mobile-rsvp"
+      href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       RSVP by 31 July
     </a>
 
@@ -918,6 +978,8 @@
           <a
             class="luna-rsvp-button"
             href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             RSVP Here →
           </a>
@@ -1144,7 +1206,12 @@
             drinks, games, movie night, camping space, and good vibes.
           </p>
 
-          <a class="rsvp-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845">
+          <a
+            class="rsvp-button"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             RSVP Here →
           </a>
         </article>
@@ -1157,14 +1224,6 @@
   </main>
 
   <script>
-    /*
-      Change this date/time if needed.
-
-      Format:
-      Month Day, Year HH:MM:SS
-
-      15:00:00 means 3:00 PM.
-    */
     const partyDate = new Date("August 8, 2026 15:00:00").getTime();
 
     const daysElement = document.getElementById("days");
