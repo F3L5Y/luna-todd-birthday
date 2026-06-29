@@ -134,6 +134,37 @@
       text-shadow: 2px 2px 0 #ffc7dc;
     }
 
+    .luna-rsvp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 22px;
+      min-height: 54px;
+      padding: 14px 28px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #ff74ad, #d94181 55%, #dd7830);
+      color: #ffffff;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-family: "Fredoka", system-ui, sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      border: 4px solid #ffe4ef;
+      box-shadow:
+        0 7px 0 #8d2e55,
+        0 16px 28px rgba(217, 65, 129, 0.28);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .luna-rsvp-button:hover,
+    .luna-rsvp-button:focus {
+      transform: translateY(-3px) rotate(1deg);
+      box-shadow:
+        0 10px 0 #8d2e55,
+        0 22px 34px rgba(217, 65, 129, 0.34);
+    }
+
     .image-card {
       position: relative;
       min-height: 360px;
@@ -545,7 +576,7 @@
       color: #22130d;
     }
 
-    .countdown- {
+    .countdown-rsvp {
       display: grid;
       grid-template-columns: 1fr 1.15fr;
       gap: 22px;
@@ -833,7 +864,8 @@
         display: block;
       }
 
-      .rsvp-button {
+      .rsvp-button,
+      .luna-rsvp-button {
         width: 100%;
       }
 
@@ -882,6 +914,13 @@
         <header class="title-block">
           <h1>Luna’s</h1>
           <h2>10th Birthday</h2>
+
+          <a
+            class="luna-rsvp-button"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfUDdDuq4hCTjmawSAqReVtoX0lRmMNnausOEFNlks6RLvlTg/viewform?usp=sharing&ouid=100642333082117815845"
+          >
+            RSVP Here →
+          </a>
         </header>
 
         <aside class="speech">
