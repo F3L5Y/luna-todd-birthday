@@ -1,488 +1,709 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <title>Luna & Todd Birthday RSVP</title>
+  <title>Luna & Todd's Birthday RSVP</title>
 
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --pink: #ec5d96;
+      --hot-pink: #d83d7c;
+      --soft-pink: #ffe4ef;
+      --cream: #fff4dc;
+      --dark: #080706;
+      --charcoal: #17120f;
+      --wood: #7a4a25;
+      --orange: #d9792f;
+      --gold: #d8a35d;
+      --purple: #b884d8;
     }
 
-    html {
-      scroll-behavior: smooth;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      margin: 0;
+      min-height: 100vh;
       font-family: "Trebuchet MS", Arial, sans-serif;
-      background: #070707;
-      color: #ffffff;
+      background:
+        radial-gradient(circle at top left, rgba(255, 160, 200, 0.45), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(255, 142, 62, 0.2), transparent 35%),
+        #110d0b;
+      color: #fff;
+      overflow-x: hidden;
     }
 
     .page {
+      width: 100%;
       min-height: 100vh;
       position: relative;
-      overflow: hidden;
       background:
-        linear-gradient(145deg, #ffe1f4 0%, #ffc8e8 47%, transparent 47%),
-        radial-gradient(circle at 80% 75%, rgba(255, 129, 44, 0.36), transparent 25%),
-        radial-gradient(circle at 72% 60%, rgba(255, 185, 76, 0.22), transparent 20%),
-        linear-gradient(145deg, transparent 0%, transparent 47%, #15100d 47%, #050505 100%);
-      padding: 24px;
+        linear-gradient(166deg, var(--soft-pink) 0 48%, transparent 48.2%),
+        radial-gradient(circle at 50% 65%, rgba(255, 115, 35, 0.35), transparent 22%),
+        linear-gradient(180deg, #070706, #19100c 65%, #090807);
     }
 
-    .page:before {
+    .page::before {
       content: "";
-      position: fixed;
+      position: absolute;
       inset: 0;
       pointer-events: none;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.55), transparent 8%),
-        radial-gradient(circle at 22% 24%, rgba(255, 115, 189, 0.28), transparent 9%),
-        radial-gradient(circle at 88% 78%, rgba(255, 92, 31, 0.18), transparent 10%);
-      opacity: 0.9;
-    }
-
-    .wrap {
-      max-width: 1120px;
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .top-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
-    }
-
-    .badge {
-      background: rgba(255, 255, 255, 0.88);
-      color: #d9368b;
-      padding: 11px 18px;
-      border-radius: 999px;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 14px;
-      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      color: #ffffff;
-      background: rgba(0, 0, 0, 0.48);
-      border: 1px solid rgba(255, 255, 255, 0.22);
-      padding: 10px 14px;
-      border-radius: 999px;
-      font-size: 13px;
-      font-weight: 800;
-      text-transform: uppercase;
-      backdrop-filter: blur(8px);
-    }
-
-    .nav-links a:last-child {
-      background: linear-gradient(135deg, #ff7ab9, #df3f8c);
-      border: none;
-      box-shadow: 0 12px 28px rgba(223, 63, 140, 0.35);
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px),
+        radial-gradient(circle, rgba(236,93,150,0.35) 1px, transparent 1px);
+      background-size: 38px 38px, 57px 57px;
+      opacity: 0.28;
     }
 
     .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      align-items: stretch;
-      margin-bottom: 28px;
-    }
-
-    .hero-panel {
-      min-height: 470px;
-      border-radius: 34px;
-      padding: 32px;
       position: relative;
-      overflow: hidden;
-      box-shadow: 0 24px 70px rgba(0,0,0,0.28);
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 36px 22px 46px;
     }
 
-    .luna-hero {
-      background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.85), transparent 22%),
-        linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,215,239,0.92));
-      border: 4px solid rgba(255, 111, 184, 0.55);
-      color: #1f1f1f;
-    }
-
-    .luna-hero:before {
-      content: "♡  ☆  ♡  ☆  ♡";
-      position: absolute;
-      top: 20px;
-      right: 24px;
-      color: rgba(222, 63, 140, 0.36);
-      font-size: 24px;
-      letter-spacing: 9px;
-    }
-
-    .todd-hero {
-      background:
-        radial-gradient(circle at 50% 70%, rgba(255, 106, 28, 0.32), transparent 25%),
-        radial-gradient(circle at 45% 92%, rgba(255, 189, 78, 0.28), transparent 20%),
-        linear-gradient(145deg, #17110e, #050505);
-      border: 4px solid rgba(219, 150, 79, 0.65);
-      color: #f8e7ce;
-    }
-
-    .kicker {
-      font-size: 14px;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      font-weight: 900;
-      margin-bottom: 14px;
-    }
-
-    .luna-hero .kicker {
-      color: #df3f8c;
-    }
-
-    .todd-hero .kicker {
-      color: #e5b06c;
-    }
-
-    h1 {
-      margin: 0;
-      line-height: 0.92;
-      font-size: clamp(54px, 8vw, 98px);
-      color: #ef4da1;
-      text-shadow: 4px 4px 0 #ffffff, 8px 8px 0 rgba(239, 77, 161, 0.16);
-    }
-
-    .todd-title {
-      color: #f3bd75;
-      text-shadow: 0 0 24px rgba(255, 133, 52, 0.45);
-    }
-
-    .age {
-      display: inline-block;
-      margin-top: 20px;
-      background: #ffffff;
-      color: #df3f8c;
-      padding: 12px 18px;
-      border-radius: 999px;
-      font-size: 26px;
-      font-weight: 900;
-      box-shadow: 0 12px 26px rgba(223, 63, 140, 0.22);
-    }
-
-    .todd-hero .age {
-      background: rgba(255,255,255,0.08);
-      color: #f3bd75;
-      border: 1px solid rgba(243, 189, 117, 0.35);
-    }
-
-    .hero-copy {
-      margin-top: 24px;
-      font-size: 21px;
-      line-height: 1.35;
-      font-weight: 800;
-      max-width: 420px;
-    }
-
-    .luna-hero .hero-copy {
-      color: #9d2c6b;
-    }
-
-    .todd-hero .hero-copy {
-      color: #f5d1a3;
-    }
-
-    .deco-row {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 26px;
-    }
-
-    .deco {
-      width: 54px;
-      height: 54px;
+    .top-section {
+      min-height: 450px;
+      position: relative;
+      color: var(--hot-pink);
       display: grid;
-      place-items: center;
-      border-radius: 18px;
-      font-size: 28px;
-      background: rgba(255,255,255,0.68);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+      grid-template-columns: 1fr 1.4fr 1fr;
+      gap: 24px;
+      align-items: start;
     }
 
-    .todd-hero .deco {
-      background: rgba(255,255,255,0.08);
-    }
-
-    .info-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 26px 0;
-    }
-
-    .info-card {
-      background: rgba(255,255,255,0.9);
-      color: #202020;
-      border-radius: 22px;
-      padding: 18px 14px;
+    .main-title {
+      grid-column: 2;
       text-align: center;
-      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
-      border: 2px solid rgba(255, 111, 184, 0.28);
+      padding-top: 8px;
+    }
+
+    .main-title h1 {
+      font-size: clamp(4rem, 10vw, 8.5rem);
+      line-height: 0.85;
+      letter-spacing: 3px;
+      color: var(--hot-pink);
+      text-shadow:
+        3px 3px 0 #ffb3cc,
+        6px 6px 0 rgba(216,61,124,0.14);
       font-weight: 900;
+      transform: rotate(-2deg);
     }
 
-    .info-card strong {
-      display: block;
-      color: #df3f8c;
-      font-size: 28px;
-      margin-bottom: 5px;
+    .main-title h2 {
+      margin-top: 14px;
+      font-size: clamp(2.2rem, 5vw, 4.3rem);
+      line-height: 1;
+      color: var(--hot-pink);
+      text-shadow: 2px 2px 0 #ffd4e3;
     }
 
-    .details-grid {
+    .pink-card {
+      grid-column: 2 / 4;
+      margin-top: 24px;
+      border: 4px solid rgba(236, 93, 150, 0.55);
+      border-radius: 26px;
+      background: rgba(255, 246, 250, 0.78);
+      padding: 22px;
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-bottom: 26px;
+      gap: 0 24px;
+      box-shadow: 0 8px 0 rgba(236, 93, 150, 0.12);
     }
 
-    .card {
-      border-radius: 30px;
-      padding: 28px;
-      box-shadow: 0 22px 56px rgba(0,0,0,0.24);
-    }
-
-    .luna-card {
-      background: rgba(255,255,255,0.9);
-      color: #262626;
-      border: 3px solid rgba(255, 111, 184, 0.55);
-    }
-
-    .todd-card {
-      background:
-        radial-gradient(circle at 50% 100%, rgba(255, 116, 31, 0.2), transparent 32%),
-        rgba(0,0,0,0.84);
-      color: #f8e7ce;
-      border: 3px solid rgba(219, 150, 79, 0.65);
-    }
-
-    .card h2 {
-      margin: 0 0 18px;
-      font-size: 34px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .luna-card h2 {
-      color: #df3f8c;
-    }
-
-    .todd-card h2 {
-      color: #e5b06c;
-    }
-
-    .feature-list {
-      display: grid;
-      gap: 12px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      font-size: 18px;
-      font-weight: 800;
-    }
-
-    .feature-list li {
+    .pink-item {
       display: flex;
       gap: 12px;
-      align-items: flex-start;
-      padding: 13px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.52);
-      line-height: 1.3;
+      align-items: center;
+      padding: 14px 4px;
+      border-bottom: 3px dotted rgba(236, 93, 150, 0.45);
+      color: var(--hot-pink);
+      font-size: clamp(1rem, 2vw, 1.32rem);
+      font-weight: 900;
+      text-transform: uppercase;
     }
 
-    .todd-card .feature-list li {
-      background: rgba(255,255,255,0.08);
+    .pink-item:nth-last-child(-n + 2) {
+      border-bottom: none;
     }
 
     .icon {
-      font-size: 24px;
+      font-size: 2rem;
       line-height: 1;
     }
 
-    .joke-card {
-      margin-bottom: 26px;
-      padding: 24px;
-      border-radius: 28px;
-      text-align: center;
-      background: #fff7fc;
-      color: #d9368b;
-      border: 3px dashed #ef4da1;
-      box-shadow: 0 20px 46px rgba(0,0,0,0.22);
-      font-size: clamp(24px, 4vw, 42px);
-      line-height: 1.15;
-      font-weight: 900;
-    }
-
-    .joke-card small {
-      display: block;
-      font-size: 16px;
-      color: #9d2c6b;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 8px;
-    }
-
-    .rsvp {
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255, 82, 164, 0.18), transparent 34%),
-        rgba(0,0,0,0.9);
-      border: 4px solid rgba(239, 77, 161, 0.62);
+    .castle {
+      grid-column: 1;
+      grid-row: 1 / span 3;
+      align-self: center;
+      min-height: 330px;
       border-radius: 34px;
-      padding: 36px 26px;
+      background:
+        radial-gradient(circle at 45% 78%, #8ad4f1 0 18%, transparent 19%),
+        radial-gradient(circle at 55% 78%, #ee78ad 0 19%, transparent 20%),
+        linear-gradient(90deg, #f48fbd, #8ccde9, #f48fbd);
+      border: 8px solid #df72aa;
+      box-shadow:
+        inset 0 0 0 8px rgba(255,255,255,0.35),
+        0 12px 24px rgba(204, 71, 132, 0.25);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .castle::before,
+    .castle::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #fff, transparent 18%),
+        #ff8fbd;
+      box-shadow:
+        55px -10px 0 #9ed8f2,
+        110px 5px 0 #caa6ef,
+        165px -8px 0 #ff8fbd,
+        220px 4px 0 #9ed8f2;
+    }
+
+    .castle::before {
+      left: 10px;
+    }
+
+    .castle::after {
+      left: 35px;
+      bottom: 48px;
+      width: 140px;
+      height: 90px;
+      border-radius: 48% 48% 12px 12px;
+      background: #7dc7e8;
+      box-shadow: none;
+    }
+
+    .axolotl {
+      position: absolute;
+      width: 118px;
+      height: 98px;
+      border-radius: 48% 48% 42% 42%;
+      background: #ffc6d9;
+      border: 3px solid #e97ca7;
+      box-shadow: inset 0 -8px 0 rgba(236, 93, 150, 0.18);
+    }
+
+    .axolotl::before,
+    .axolotl::after {
+      content: "✹";
+      position: absolute;
+      top: 12px;
+      color: #e65390;
+      font-size: 2rem;
+    }
+
+    .axolotl::before {
+      left: -18px;
+    }
+
+    .axolotl::after {
+      right: -18px;
+    }
+
+    .axolotl .eyes {
+      position: absolute;
+      top: 32px;
+      left: 29px;
+      width: 12px;
+      height: 12px;
+      background: #1b1718;
+      border-radius: 50%;
+      box-shadow: 45px 0 0 #1b1718;
+    }
+
+    .axolotl .smile {
+      position: absolute;
+      top: 53px;
+      left: 42px;
+      width: 34px;
+      height: 18px;
+      border-bottom: 5px solid #e65390;
+      border-radius: 0 0 30px 30px;
+    }
+
+    .a1 {
+      left: 42px;
+      top: 20px;
+      transform: rotate(-7deg) scale(1.15);
+    }
+
+    .a2 {
+      right: 28px;
+      top: 48px;
+      transform: rotate(10deg) scale(0.9);
+    }
+
+    .speech {
+      grid-column: 3;
+      justify-self: center;
+      margin-top: 18px;
+      max-width: 320px;
+      padding: 26px;
+      background: rgba(255,255,255,0.72);
+      color: var(--hot-pink);
+      border: 4px dashed #ed6aa1;
+      border-radius: 46px;
+      font-size: clamp(1.25rem, 2.4vw, 2rem);
+      font-weight: 900;
       text-align: center;
-      box-shadow: 0 26px 70px rgba(0,0,0,0.42);
-      margin-bottom: 20px;
+      line-height: 1.2;
+      transform: rotate(3deg);
     }
 
-    .rsvp h2 {
-      margin: 0;
-      font-size: clamp(42px, 7vw, 74px);
-      line-height: 0.95;
-      color: #ffffff;
+    .stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      color: var(--pink);
+      font-size: 2rem;
+    }
+
+    .stars span {
+      position: absolute;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .stars span:nth-child(1) { left: 27%; top: 5%; }
+    .stars span:nth-child(2) { left: 91%; top: 5%; animation-delay: 0.7s; }
+    .stars span:nth-child(3) { left: 32%; top: 29%; animation-delay: 1.3s; }
+    .stars span:nth-child(4) { left: 7%; top: 48%; animation-delay: 2s; }
+    .stars span:nth-child(5) { left: 70%; top: 25%; animation-delay: 1s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0); }
+      50% { transform: translateY(-10px) rotate(8deg); }
+    }
+
+    .date-banner {
+      max-width: 520px;
+      margin: -8px auto 22px;
+      background: #121010;
+      color: #f5e1ca;
+      border: 3px solid #e75693;
+      box-shadow: 0 0 0 4px #14110f, 0 10px 25px rgba(0,0,0,0.4);
+      text-align: center;
+      padding: 14px 28px;
+      font-size: clamp(2.2rem, 6vw, 4.5rem);
+      font-weight: 900;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 4px;
+      transform: rotate(-1deg);
     }
 
-    .rsvp p {
-      max-width: 660px;
-      margin: 14px auto 26px;
-      font-size: 19px;
-      line-height: 1.45;
-      color: #f6b6d6;
+    .bottom-section {
+      position: relative;
+      color: #f1d4b4;
+      padding-top: 8px;
+      display: grid;
+      grid-template-columns: 1fr 1.35fr 1fr;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .adult-title {
+      grid-column: 2;
+      text-align: center;
+    }
+
+    .adult-title h2 {
+      font-family: Georgia, serif;
+      font-size: clamp(4rem, 9vw, 8rem);
+      line-height: 0.8;
+      letter-spacing: 4px;
+      color: #f0dcc8;
+      text-shadow:
+        3px 3px 0 #52311e,
+        0 0 18px rgba(255, 137, 45, 0.35);
+      text-transform: uppercase;
+    }
+
+    .adult-title h3 {
+      margin-top: 14px;
+      font-size: clamp(2.1rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      color: var(--orange);
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 #4c2615;
+    }
+
+    .beer {
+      min-height: 285px;
+      position: relative;
+      border-radius: 26px;
+      background:
+        radial-gradient(circle at 60% 45%, rgba(255, 136, 35, 0.2), transparent 35%),
+        linear-gradient(140deg, #101010, #3a2014);
+      border: 4px solid #62401f;
+      box-shadow: inset 0 0 30px rgba(255,255,255,0.05), 0 18px 30px rgba(0,0,0,0.45);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+      color: #e7bd81;
+      font-family: Georgia, serif;
+      font-size: 2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .beer::before {
+      content: "";
+      position: absolute;
+      left: 16px;
+      top: -42px;
+      width: 26px;
+      height: 95px;
+      background: linear-gradient(#27130b, #ba692d, #21120d);
+      border-radius: 20px;
+      border: 3px solid #4d2d17;
+    }
+
+    .fire {
+      position: absolute;
+      left: 50%;
+      bottom: -24px;
+      width: 165px;
+      height: 145px;
+      transform: translateX(-50%);
+      background:
+        radial-gradient(ellipse at center bottom, rgba(255, 116, 23, 0.45), transparent 65%);
+      pointer-events: none;
+    }
+
+    .fire span {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 48px;
+      height: 100px;
+      background: linear-gradient(#fff6a8, #ff8a1d 50%, transparent);
+      border-radius: 70% 0 70% 70%;
+      transform-origin: bottom center;
+      animation: flame 0.9s infinite alternate ease-in-out;
+      filter: blur(0.2px);
+    }
+
+    .fire span:nth-child(1) {
+      transform: translateX(-70%) rotate(-18deg);
+    }
+
+    .fire span:nth-child(2) {
+      width: 58px;
+      height: 130px;
+      transform: translateX(-35%) rotate(8deg);
+      animation-delay: 0.2s;
+    }
+
+    .fire span:nth-child(3) {
+      width: 42px;
+      height: 92px;
+      transform: translateX(20%) rotate(22deg);
+      animation-delay: 0.35s;
+    }
+
+    @keyframes flame {
+      from { opacity: 0.85; scale: 0.95; }
+      to { opacity: 1; scale: 1.08; }
+    }
+
+    .chalkboard {
+      min-height: 310px;
+      padding: 28px;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,0.04), transparent),
+        #211b16;
+      border: 12px solid #5a341c;
+      box-shadow: inset 0 0 30px rgba(0,0,0,0.75), 0 18px 35px rgba(0,0,0,0.45);
+      transform: rotate(2deg);
+    }
+
+    .chalkboard ul {
+      list-style: none;
+      display: grid;
+      gap: 14px;
+    }
+
+    .chalkboard li {
+      color: #f1c996;
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
       font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .schedule {
+      grid-column: 1 / 4;
+      margin: 8px auto 0;
+      width: min(760px, 100%);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      background: rgba(26, 17, 13, 0.96);
+      border: 5px solid #5b3822;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.45);
+    }
+
+    .schedule-item {
+      padding: 16px 18px;
+      text-align: center;
+      border-right: 3px dotted #92704d;
+      color: #ecb276;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .schedule-item:last-child {
+      border-right: none;
+      color: #d993e9;
+    }
+
+    .schedule-time {
+      display: block;
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+    }
+
+    .schedule-label {
+      display: block;
+      font-size: clamp(0.9rem, 2vw, 1.25rem);
+    }
+
+    .welcome {
+      grid-column: 1 / 4;
+      margin-top: 18px;
+      text-align: center;
+      background: #231711;
+      border: 4px solid #5b3822;
+      padding: 15px 18px;
+      color: #e5c19c;
+      font-size: clamp(1.1rem, 2.6vw, 2rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+    }
+
+    .rsvp-panel {
+      position: relative;
+      z-index: 2;
+      max-width: 760px;
+      margin: 42px auto 0;
+      padding: 30px 24px;
+      text-align: center;
+      background:
+        linear-gradient(145deg, rgba(255, 228, 239, 0.95), rgba(35, 23, 17, 0.96));
+      border: 5px solid #ec5d96;
+      border-radius: 30px;
+      box-shadow:
+        0 0 0 5px rgba(255,255,255,0.18),
+        0 20px 45px rgba(0,0,0,0.45);
+    }
+
+    .rsvp-panel h2 {
+      color: #fff0d9;
+      font-size: clamp(2.4rem, 6vw, 4.5rem);
+      line-height: 0.95;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 #873756;
+    }
+
+    .rsvp-panel p {
+      max-width: 580px;
+      margin: 16px auto 24px;
+      color: #fff7ef;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      font-weight: 700;
     }
 
     .rsvp-button {
       display: inline-block;
-      text-decoration: none;
-      color: #ffffff;
-      background: linear-gradient(135deg, #ff8ac2, #df3f8c);
-      padding: 19px 62px;
+      padding: 18px 34px;
       border-radius: 999px;
-      font-size: 24px;
-      font-weight: 900;
+      background:
+        linear-gradient(135deg, #ff77ae, #d83d7c 45%, #d9792f);
+      color: #fff;
+      text-decoration: none;
       text-transform: uppercase;
+      font-size: 1.35rem;
+      font-weight: 900;
       letter-spacing: 1px;
-      box-shadow: 0 16px 34px rgba(223, 63, 140, 0.42);
+      border: 4px solid #ffe4ef;
+      box-shadow:
+        0 8px 0 #6d301d,
+        0 16px 30px rgba(0,0,0,0.35);
       transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
-    .rsvp-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 42px rgba(223, 63, 140, 0.5);
+    .rsvp-button:hover,
+    .rsvp-button:focus {
+      transform: translateY(-3px);
+      box-shadow:
+        0 11px 0 #6d301d,
+        0 22px 35px rgba(0,0,0,0.45);
     }
 
-    .sleep-note {
-      margin-top: 24px;
-      display: inline-block;
+    .details-grid {
+      max-width: 1000px;
+      margin: 36px auto 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .detail-card {
+      padding: 24px;
+      border-radius: 24px;
+      border: 3px solid rgba(255,255,255,0.22);
       background: rgba(255,255,255,0.08);
-      border: 2px solid rgba(219, 150, 79, 0.52);
-      color: #f8e7ce;
-      border-radius: 22px;
-      padding: 18px 22px;
-      font-size: 19px;
-      font-weight: 800;
-      line-height: 1.35;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 12px 26px rgba(0,0,0,0.25);
     }
 
-    .footer {
+    .detail-card.luna {
+      background: rgba(255, 228, 239, 0.92);
+      color: var(--hot-pink);
+      border-color: #ec5d96;
+    }
+
+    .detail-card.todd {
+      background: rgba(35, 23, 17, 0.92);
+      color: #f0c898;
+      border-color: #7a4a25;
+    }
+
+    .detail-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .detail-card p,
+    .detail-card li {
+      font-size: 1rem;
+      line-height: 1.55;
+      font-weight: 700;
+    }
+
+    .detail-card ul {
+      margin-left: 18px;
+      margin-top: 8px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
       text-align: center;
-      color: rgba(255,255,255,0.62);
-      font-size: 13px;
-      padding: 10px 0 0;
+      padding: 36px 20px 48px;
+      color: #f7d7ba;
+      font-weight: 800;
+      letter-spacing: 0.5px;
     }
 
-    @media (max-width: 880px) {
+    @media (max-width: 900px) {
       .page {
         background:
-          linear-gradient(180deg, #ffe1f4 0%, #ffc8e8 45%, #111 45%, #050505 100%);
+          linear-gradient(180deg, var(--soft-pink) 0 52%, transparent 52.2%),
+          linear-gradient(180deg, #070706, #19100c 65%, #090807);
       }
 
-      .top-nav {
-        flex-direction: column;
-        align-items: center;
+      .top-section,
+      .bottom-section {
+        grid-template-columns: 1fr;
       }
 
-      .nav-links {
-        justify-content: center;
+      .main-title,
+      .pink-card,
+      .speech,
+      .castle,
+      .adult-title,
+      .schedule,
+      .welcome {
+        grid-column: 1;
       }
 
-      .hero,
+      .castle {
+        min-height: 250px;
+        order: 2;
+      }
+
+      .speech {
+        justify-self: stretch;
+        max-width: none;
+      }
+
+      .pink-card {
+        grid-template-columns: 1fr;
+      }
+
+      .pink-item:nth-last-child(-n + 2) {
+        border-bottom: 3px dotted rgba(236, 93, 150, 0.45);
+      }
+
+      .pink-item:last-child {
+        border-bottom: none;
+      }
+
+      .date-banner {
+        margin-top: 28px;
+      }
+
+      .schedule {
+        grid-template-columns: 1fr;
+      }
+
+      .schedule-item {
+        border-right: none;
+        border-bottom: 3px dotted #92704d;
+      }
+
+      .schedule-item:last-child {
+        border-bottom: none;
+      }
+
       .details-grid {
         grid-template-columns: 1fr;
       }
-
-      .hero-panel {
-        min-height: auto;
-      }
-
-      .info-strip {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
-    @media (max-width: 560px) {
-      .page {
-        padding: 12px;
+    @media (max-width: 520px) {
+      .hero {
+        padding-inline: 14px;
       }
 
-      .wrap {
-        width: 100%;
+      .main-title h1 {
+        font-size: 3.6rem;
       }
 
-      .hero-panel,
-      .card,
-      .rsvp {
-        padding: 24px 18px;
-        border-radius: 26px;
+      .main-title h2 {
+        font-size: 2rem;
       }
 
-      .info-strip {
-        grid-template-columns: 1fr;
+      .adult-title h2 {
+        font-size: 3.8rem;
       }
 
-      .nav-links a {
-        font-size: 12px;
+      .adult-title h3 {
+        font-size: 2.15rem;
       }
 
-      .rsvp-button {
-        width: 100%;
-        padding: 18px 20px;
-      }
-
-      h1 {
-        font-size: 54px;
-      }
-
-      .card h2 {
-        font-size: 30px;
+      .chalkboard,
+      .beer {
+        transform: none;
       }
     }
   </style>
@@ -490,121 +711,162 @@
 
 <body>
   <main class="page">
-    <div class="wrap">
-
-      <nav class="top-nav">
-        <div class="badge">Luna & Todd Birthday Celebration</div>
-        <div class="nav-links">
-          <a href="#details">Details</a>
-          <a href="#schedule">Schedule</a>
-          <a href="#rsvp">RSVP</a>
-        </div>
-      </nav>
-
-      <section class="hero">
-        <div class="hero-panel luna-hero">
-          <div class="kicker">Kawaii party zone</div>
-          <h1>Luna</h1>
-          <div class="age">10th Birthday</div>
-          <p class="hero-copy">
-            Jumping castle, party games, sweet treats, and cute axolotl-style fun everywhere.
-          </p>
-          <div class="deco-row">
-            <span class="deco">🩷</span>
-            <span class="deco">🫧</span>
-            <span class="deco">⭐</span>
-            <span class="deco">🦎</span>
-            <span class="deco">🎈</span>
-          </div>
-        </div>
-
-        <div class="hero-panel todd-hero">
-          <div class="kicker">Firepit night zone</div>
-          <h1 class="todd-title">Todd</h1>
-          <div class="age">37th Birthday</div>
-          <p class="hero-copy">
-            Fire, BBQ tacos, craft and ginger beer on tap, red and white selection, and good vibes.
-          </p>
-          <div class="deco-row">
-            <span class="deco">🔥</span>
-            <span class="deco">🌮</span>
-            <span class="deco">🍺</span>
-            <span class="deco">🍷</span>
-            <span class="deco">✨</span>
-          </div>
-        </div>
-      </section>
-
-      <section class="info-strip" id="schedule">
-        <div class="info-card">
-          <strong>August 8th</strong>
-          Party Day
-        </div>
-        <div class="info-card">
-          <strong>3PM</strong>
-          Arrival
-        </div>
-        <div class="info-card">
-          <strong>5PM</strong>
-          Dinner
-        </div>
-        <div class="info-card">
-          <strong>7PM</strong>
-          Movie for Kids
-        </div>
-      </section>
-
-      <section class="details-grid" id="details">
-        <div class="card luna-card">
-          <h2>Luna’s Fun</h2>
-          <ul class="feature-list">
-            <li><span class="icon">🏰</span> Jumping castle</li>
-            <li><span class="icon">🎮</span> Party games</li>
-            <li><span class="icon">🥤</span> Sparkling apple juice and coconut water</li>
-            <li><span class="icon">🍭</span> Party food: fruit, lollies, chips, etc</li>
-            <li><span class="icon">🍿</span> Movie night — bring PJ’s and a pillow</li>
-          </ul>
-        </div>
-
-        <div class="card todd-card">
-          <h2>Todd’s Vibes</h2>
-          <ul class="feature-list">
-            <li><span class="icon">🔥</span> Firepit and relaxed night vibes</li>
-            <li><span class="icon">🌮</span> BBQ tacos for dinner</li>
-            <li><span class="icon">🍺</span> Craft and ginger beer on tap</li>
-            <li><span class="icon">🍷</span> Red and White selection</li>
-            <li><span class="icon">⭐</span> Good vibes all round</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="joke-card">
-        <small>Luna says</small>
-        How do you plan a space party?<br>
-        You Plan-et
-      </section>
-
-      <section class="rsvp" id="rsvp">
-        <h2>RSVP</h2>
-        <p>
-          Let us know who is coming, how many adults and kids are joining, and whether the kids are staying for movie night.
-        </p>
-
-        <a class="rsvp-button" href="PASTE_YOUR_FORM_LINK_HERE" target="_blank">
-          Complete RSVP
-        </a>
-
-        <div class="sleep-note">
-          Welcome to bring a swag, or there is a caravan park across the road.
-        </div>
-      </section>
-
-      <div class="footer">
-        Luna’s 10th Birthday & Todd’s 37th Birthday
+    <section class="hero" aria-label="Birthday invitation">
+      <div class="stars" aria-hidden="true">
+        <span>★</span>
+        <span>★</span>
+        <span>♥</span>
+        <span>✦</span>
+        <span>●</span>
       </div>
 
-    </div>
+      <section class="top-section" aria-label="Luna's birthday details">
+        <div class="castle" aria-label="Pink jumping castle illustration">
+          <div class="axolotl a1" aria-hidden="true">
+            <span class="eyes"></span>
+            <span class="smile"></span>
+          </div>
+          <div class="axolotl a2" aria-hidden="true">
+            <span class="eyes"></span>
+            <span class="smile"></span>
+          </div>
+        </div>
+
+        <header class="main-title">
+          <h1>Luna’s</h1>
+          <h2>10th Birthday</h2>
+        </header>
+
+        <aside class="speech">
+          Luna says:<br />
+          How do you plan a space party?<br />
+          You Plan-et ♥
+        </aside>
+
+        <div class="pink-card">
+          <div class="pink-item">
+            <span class="icon">🏰</span>
+            <span>Jumping Castle</span>
+          </div>
+
+          <div class="pink-item">
+            <span class="icon">🍓</span>
+            <span>Party Food: Fruit, Lollies, Chips, Etc</span>
+          </div>
+
+          <div class="pink-item">
+            <span class="icon">🎲</span>
+            <span>Party Games</span>
+          </div>
+
+          <div class="pink-item">
+            <span class="icon">🎬</span>
+            <span>Movie Night<br />Bring PJ’s and a Pillow</span>
+          </div>
+
+          <div class="pink-item">
+            <span class="icon">🥤</span>
+            <span>Sparkling Apple Juice & Coconut Water</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="date-banner">August 8th</div>
+
+      <section class="bottom-section" aria-label="Todd's birthday details">
+        <div class="beer">
+          Craft &<br />
+          Ginger Beer<br />
+          On Tap
+        </div>
+
+        <header class="adult-title">
+          <h2>Todd’s</h2>
+          <h3>37th Birthday</h3>
+          <div class="fire" aria-hidden="true">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </header>
+
+        <aside class="chalkboard">
+          <ul>
+            <li>🔥 Fire</li>
+            <li>🌮 BBQ Tacos</li>
+            <li>🍺 Craft & Ginger Beer on Tap</li>
+            <li>🍷 Red & White Selection</li>
+            <li>★ Good Vibes</li>
+          </ul>
+        </aside>
+
+        <div class="schedule">
+          <div class="schedule-item">
+            <span class="schedule-time">3PM</span>
+            <span class="schedule-label">Arrival</span>
+          </div>
+
+          <div class="schedule-item">
+            <span class="schedule-time">5PM</span>
+            <span class="schedule-label">Dinner</span>
+          </div>
+
+          <div class="schedule-item">
+            <span class="schedule-time">7PM</span>
+            <span class="schedule-label">Movie for Kids</span>
+          </div>
+        </div>
+
+        <div class="welcome">
+          Welcome to bring a swag or there is a caravan park across the road.
+        </div>
+      </section>
+
+      <section class="rsvp-panel" aria-label="RSVP">
+        <h2>RSVP for the Party</h2>
+        <p>
+          Join us for Luna’s 10th birthday and Todd’s 37th birthday on
+          <strong>August 8th</strong>. Please RSVP so we can plan food,
+          drinks, games, movie night, and good vibes.
+        </p>
+
+        <a class="rsvp-button" href="YOUR_RSVP_FORM_LINK_HERE">
+          RSVP Here
+        </a>
+      </section>
+
+      <section class="details-grid" aria-label="Party information">
+        <article class="detail-card luna">
+          <h3>Luna’s Party</h3>
+          <p>
+            A pink axolotl-inspired celebration with a jumping castle,
+            party games, fruit, lollies, chips, sparkling apple juice,
+            coconut water, and a movie night.
+          </p>
+          <ul>
+            <li>Bring PJ’s and a pillow for movie night.</li>
+            <li>Kids’ movie starts at 7PM.</li>
+          </ul>
+        </article>
+
+        <article class="detail-card todd">
+          <h3>Todd’s Party</h3>
+          <p>
+            A rustic campfire-style birthday with BBQ tacos, craft and
+            ginger beer on tap, red and white selection, fire, and good vibes.
+          </p>
+          <ul>
+            <li>Arrival from 3PM.</li>
+            <li>Dinner at 5PM.</li>
+            <li>Swags welcome, or use the caravan park across the road.</li>
+          </ul>
+        </article>
+      </section>
+    </section>
+
+    <footer>
+      Luna’s 10th Birthday + Todd’s 37th Birthday · August 8th · 3PM Arrival
+    </footer>
   </main>
 </body>
 </html>
-```
