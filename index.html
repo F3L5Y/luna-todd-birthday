@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,209 +18,271 @@
 
     body {
       margin: 0;
-      font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
-      background: #050505;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: #070707;
       color: #ffffff;
     }
 
-    .party-page {
+    .page {
       min-height: 100vh;
-      background: linear-gradient(135deg, #ffe3f1 0%, #ffd6ec 45%, #101010 45%, #050505 100%);
-      color: #ffffff;
-      padding: 24px;
+      position: relative;
       overflow: hidden;
+      background:
+        linear-gradient(145deg, #ffe1f4 0%, #ffc8e8 47%, transparent 47%),
+        radial-gradient(circle at 80% 75%, rgba(255, 129, 44, 0.36), transparent 25%),
+        radial-gradient(circle at 72% 60%, rgba(255, 185, 76, 0.22), transparent 20%),
+        linear-gradient(145deg, transparent 0%, transparent 47%, #15100d 47%, #050505 100%);
+      padding: 24px;
     }
 
-    .party-wrap {
-      max-width: 1100px;
+    .page:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 12% 12%, rgba(255, 255, 255, 0.55), transparent 8%),
+        radial-gradient(circle at 22% 24%, rgba(255, 115, 189, 0.28), transparent 9%),
+        radial-gradient(circle at 88% 78%, rgba(255, 92, 31, 0.18), transparent 10%);
+      opacity: 0.9;
+    }
+
+    .wrap {
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 28px 20px 44px;
-      border-radius: 24px;
+      position: relative;
+      z-index: 1;
     }
 
-    .nav {
+    .top-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      margin-bottom: 36px;
+      gap: 14px;
+      margin-bottom: 28px;
     }
 
-    .logo {
-      color: #d93d82;
-      font-size: 18px;
-      font-weight: 900;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      background: rgba(255, 255, 255, 0.78);
-      padding: 10px 16px;
+    .badge {
+      background: rgba(255, 255, 255, 0.88);
+      color: #d9368b;
+      padding: 11px 18px;
       border-radius: 999px;
-      box-shadow: 0 8px 24px rgba(217, 61, 130, 0.18);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 14px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.18);
     }
 
     .nav-links {
       display: flex;
-      gap: 14px;
-      align-items: center;
-      font-size: 13px;
-      text-transform: uppercase;
-      font-weight: 800;
+      gap: 10px;
       flex-wrap: wrap;
       justify-content: flex-end;
     }
 
     .nav-links a {
-      color: #1f1f1f;
       text-decoration: none;
-      background: rgba(255, 255, 255, 0.78);
-      padding: 9px 13px;
+      color: #ffffff;
+      background: rgba(0, 0, 0, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      padding: 10px 14px;
       border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      text-transform: uppercase;
+      backdrop-filter: blur(8px);
     }
 
-    .nav-links .rsvp-button-small {
-      color: #ffffff;
-      background: #e84b91;
-      box-shadow: 0 8px 22px rgba(232, 75, 145, 0.35);
+    .nav-links a:last-child {
+      background: linear-gradient(135deg, #ff7ab9, #df3f8c);
+      border: none;
+      box-shadow: 0 12px 28px rgba(223, 63, 140, 0.35);
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: center;
-      margin-bottom: 34px;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 28px;
     }
 
-    .hero-card {
-      background: rgba(255, 255, 255, 0.86);
-      color: #222222;
-      padding: 34px;
-      border-radius: 30px;
-      border: 3px solid rgba(232, 75, 145, 0.35);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+    .hero-panel {
+      min-height: 470px;
+      border-radius: 34px;
+      padding: 32px;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.28);
     }
 
-    .hero-card:before {
-      content: "♡ ★ ♡ ★ ♡";
-      position: absolute;
-      right: 24px;
-      top: 18px;
-      color: rgba(232, 75, 145, 0.35);
-      font-size: 22px;
-      letter-spacing: 8px;
-    }
-
-    .eyebrow {
-      color: #e84b91;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-      font-size: 14px;
-    }
-
-    .hero h1 {
-      margin: 0;
-      line-height: 0.95;
-      font-size: clamp(42px, 7vw, 82px);
-      color: #e84b91;
-      text-shadow: 3px 3px 0 #ffffff, 6px 6px 0 rgba(232, 75, 145, 0.18);
-    }
-
-    .hero h1 span {
+    .luna-hero {
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.85), transparent 22%),
+        linear-gradient(145deg, rgba(255,255,255,0.9), rgba(255,215,239,0.92));
+      border: 4px solid rgba(255, 111, 184, 0.55);
       color: #1f1f1f;
-      display: block;
-      font-size: clamp(30px, 4.2vw, 52px);
-      margin-top: 16px;
-      text-shadow: none;
+    }
+
+    .luna-hero:before {
+      content: "♡  ☆  ♡  ☆  ♡";
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      color: rgba(222, 63, 140, 0.36);
+      font-size: 24px;
+      letter-spacing: 9px;
+    }
+
+    .todd-hero {
+      background:
+        radial-gradient(circle at 50% 70%, rgba(255, 106, 28, 0.32), transparent 25%),
+        radial-gradient(circle at 45% 92%, rgba(255, 189, 78, 0.28), transparent 20%),
+        linear-gradient(145deg, #17110e, #050505);
+      border: 4px solid rgba(219, 150, 79, 0.65);
+      color: #f8e7ce;
+    }
+
+    .kicker {
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    .luna-hero .kicker {
+      color: #df3f8c;
+    }
+
+    .todd-hero .kicker {
+      color: #e5b06c;
+    }
+
+    h1 {
+      margin: 0;
+      line-height: 0.92;
+      font-size: clamp(54px, 8vw, 98px);
+      color: #ef4da1;
+      text-shadow: 4px 4px 0 #ffffff, 8px 8px 0 rgba(239, 77, 161, 0.16);
+    }
+
+    .todd-title {
+      color: #f3bd75;
+      text-shadow: 0 0 24px rgba(255, 133, 52, 0.45);
+    }
+
+    .age {
+      display: inline-block;
+      margin-top: 20px;
+      background: #ffffff;
+      color: #df3f8c;
+      padding: 12px 18px;
+      border-radius: 999px;
+      font-size: 26px;
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(223, 63, 140, 0.22);
+    }
+
+    .todd-hero .age {
+      background: rgba(255,255,255,0.08);
+      color: #f3bd75;
+      border: 1px solid rgba(243, 189, 117, 0.35);
     }
 
     .hero-copy {
-      color: #a52f68;
-      font-size: 22px;
+      margin-top: 24px;
+      font-size: 21px;
       line-height: 1.35;
-      margin: 22px 0 0;
       font-weight: 800;
+      max-width: 420px;
     }
 
-    .joke {
-      background: #fff8fc;
-      border: 3px dashed #e84b91;
-      color: #d93d82;
-      border-radius: 30px;
-      padding: 26px;
-      font-size: 27px;
-      line-height: 1.25;
-      font-weight: 900;
-      text-align: center;
-      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+    .luna-hero .hero-copy {
+      color: #9d2c6b;
     }
 
-    .joke small {
-      display: block;
-      color: #a52f68;
-      font-size: 17px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .todd-hero .hero-copy {
+      color: #f5d1a3;
     }
 
-    .details-bar {
+    .deco-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .deco {
+      width: 54px;
+      height: 54px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      font-size: 28px;
+      background: rgba(255,255,255,0.68);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+    }
+
+    .todd-hero .deco {
+      background: rgba(255,255,255,0.08);
+    }
+
+    .info-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 14px;
-      margin-bottom: 32px;
+      margin: 26px 0;
     }
 
-    .detail {
-      background: rgba(255, 255, 255, 0.92);
-      color: #1f1f1f;
-      border-radius: 18px;
+    .info-card {
+      background: rgba(255,255,255,0.9);
+      color: #202020;
+      border-radius: 22px;
       padding: 18px 14px;
       text-align: center;
-      border: 2px solid rgba(232, 75, 145, 0.3);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.18);
+      border: 2px solid rgba(255, 111, 184, 0.28);
       font-weight: 900;
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
     }
 
-    .detail strong {
+    .info-card strong {
       display: block;
-      color: #e84b91;
-      font-size: 26px;
-      line-height: 1;
-      margin-bottom: 6px;
+      color: #df3f8c;
+      font-size: 28px;
+      margin-bottom: 5px;
     }
 
-    .party-sections {
+    .details-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 22px;
-      margin-bottom: 34px;
+      margin-bottom: 26px;
     }
 
-    .section-card {
-      border-radius: 28px;
+    .card {
+      border-radius: 30px;
       padding: 28px;
-      min-height: 270px;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+      box-shadow: 0 22px 56px rgba(0,0,0,0.24);
     }
 
     .luna-card {
-      background: rgba(255, 255, 255, 0.9);
-      color: #222222;
-      border: 3px solid rgba(232, 75, 145, 0.35);
+      background: rgba(255,255,255,0.9);
+      color: #262626;
+      border: 3px solid rgba(255, 111, 184, 0.55);
     }
 
     .todd-card {
-      background: radial-gradient(circle at center, rgba(255, 126, 48, 0.25), rgba(0, 0, 0, 0.9) 60%);
-      border: 3px solid rgba(212, 150, 74, 0.65);
-      color: #f8e6c9;
+      background:
+        radial-gradient(circle at 50% 100%, rgba(255, 116, 31, 0.2), transparent 32%),
+        rgba(0,0,0,0.84);
+      color: #f8e7ce;
+      border: 3px solid rgba(219, 150, 79, 0.65);
     }
 
-    .section-card h2 {
-      margin: 0 0 20px;
+    .card h2 {
+      margin: 0 0 18px;
       font-size: 34px;
       text-align: center;
       text-transform: uppercase;
@@ -227,19 +290,19 @@
     }
 
     .luna-card h2 {
-      color: #e84b91;
+      color: #df3f8c;
     }
 
     .todd-card h2 {
-      color: #e5b16c;
+      color: #e5b06c;
     }
 
     .feature-list {
       display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
+      gap: 12px;
       list-style: none;
+      padding: 0;
+      margin: 0;
       font-size: 18px;
       font-weight: 800;
     }
@@ -248,88 +311,123 @@
       display: flex;
       gap: 12px;
       align-items: flex-start;
+      padding: 13px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.52);
       line-height: 1.3;
-      padding: 12px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.45);
     }
 
     .todd-card .feature-list li {
-      background: rgba(255, 255, 255, 0.08);
+      background: rgba(255,255,255,0.08);
     }
 
     .icon {
-      font-size: 23px;
+      font-size: 24px;
       line-height: 1;
     }
 
-    .rsvp-panel {
-      background: rgba(0, 0, 0, 0.9);
-      border: 3px solid rgba(232, 75, 145, 0.65);
-      border-radius: 34px;
-      padding: 36px 28px;
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+    .joke-card {
+      margin-bottom: 26px;
+      padding: 24px;
+      border-radius: 28px;
       text-align: center;
+      background: #fff7fc;
+      color: #d9368b;
+      border: 3px dashed #ef4da1;
+      box-shadow: 0 20px 46px rgba(0,0,0,0.22);
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1.15;
+      font-weight: 900;
     }
 
-    .rsvp-panel h2 {
-      color: #ffffff;
-      text-align: center;
-      font-size: 48px;
-      margin: 0;
+    .joke-card small {
+      display: block;
+      font-size: 16px;
+      color: #9d2c6b;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
     }
 
-    .rsvp-panel p {
+    .rsvp {
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 82, 164, 0.18), transparent 34%),
+        rgba(0,0,0,0.9);
+      border: 4px solid rgba(239, 77, 161, 0.62);
+      border-radius: 34px;
+      padding: 36px 26px;
       text-align: center;
-      color: #f6a5cb;
+      box-shadow: 0 26px 70px rgba(0,0,0,0.42);
+      margin-bottom: 20px;
+    }
+
+    .rsvp h2 {
+      margin: 0;
+      font-size: clamp(42px, 7vw, 74px);
+      line-height: 0.95;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+    }
+
+    .rsvp p {
+      max-width: 660px;
+      margin: 14px auto 26px;
       font-size: 19px;
-      font-weight: 800;
-      margin: 10px auto 26px;
-      max-width: 650px;
       line-height: 1.45;
+      color: #f6b6d6;
+      font-weight: 800;
     }
 
     .rsvp-button {
       display: inline-block;
       text-decoration: none;
-      cursor: pointer;
-      background: linear-gradient(135deg, #ff8abe, #e84b91);
       color: #ffffff;
+      background: linear-gradient(135deg, #ff8ac2, #df3f8c);
+      padding: 19px 62px;
+      border-radius: 999px;
       font-size: 24px;
       font-weight: 900;
       text-transform: uppercase;
-      padding: 18px 58px;
-      border-radius: 999px;
-      box-shadow: 0 14px 34px rgba(232, 75, 145, 0.35);
       letter-spacing: 1px;
-      margin-bottom: 26px;
+      box-shadow: 0 16px 34px rgba(223, 63, 140, 0.42);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
     }
 
     .rsvp-button:hover {
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 42px rgba(223, 63, 140, 0.5);
     }
 
-    .footer-note {
+    .sleep-note {
       margin-top: 24px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 2px solid rgba(212, 150, 74, 0.5);
-      color: #f8e6c9;
-      padding: 20px;
-      border-radius: 18px;
-      text-align: center;
-      font-size: 20px;
+      display: inline-block;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(219, 150, 79, 0.52);
+      color: #f8e7ce;
+      border-radius: 22px;
+      padding: 18px 22px;
+      font-size: 19px;
       font-weight: 800;
+      line-height: 1.35;
     }
 
-    @media (max-width: 850px) {
-      .party-page {
-        background: linear-gradient(180deg, #ffe3f1 0%, #ffd6ec 48%, #070707 48%, #050505 100%);
+    .footer {
+      text-align: center;
+      color: rgba(255,255,255,0.62);
+      font-size: 13px;
+      padding: 10px 0 0;
+    }
+
+    @media (max-width: 880px) {
+      .page {
+        background:
+          linear-gradient(180deg, #ffe1f4 0%, #ffc8e8 45%, #111 45%, #050505 100%);
       }
 
-      .nav {
+      .top-nav {
         flex-direction: column;
+        align-items: center;
       }
 
       .nav-links {
@@ -337,106 +435,127 @@
       }
 
       .hero,
-      .party-sections {
+      .details-grid {
         grid-template-columns: 1fr;
       }
 
-      .details-bar {
+      .hero-panel {
+        min-height: auto;
+      }
+
+      .info-strip {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .hero-card {
-        padding: 26px;
-      }
-
-      .joke {
-        font-size: 23px;
       }
     }
 
-    @media (max-width: 520px) {
-      .party-page {
+    @media (max-width: 560px) {
+      .page {
         padding: 12px;
       }
 
-      .party-wrap {
-        padding: 20px 10px 30px;
+      .wrap {
+        width: 100%;
       }
 
-      .details-bar {
+      .hero-panel,
+      .card,
+      .rsvp {
+        padding: 24px 18px;
+        border-radius: 26px;
+      }
+
+      .info-strip {
         grid-template-columns: 1fr;
       }
 
-      .rsvp-panel {
-        padding: 28px 18px;
-      }
-
-      .rsvp-panel h2 {
-        font-size: 38px;
+      .nav-links a {
+        font-size: 12px;
       }
 
       .rsvp-button {
         width: 100%;
-        box-sizing: border-box;
         padding: 18px 20px;
+      }
+
+      h1 {
+        font-size: 54px;
+      }
+
+      .card h2 {
+        font-size: 30px;
       }
     }
   </style>
 </head>
 
 <body>
-  <section class="party-page">
-    <div class="party-wrap">
+  <main class="page">
+    <div class="wrap">
 
-      <nav class="nav">
-        <div class="logo">Luna & Todd Birthday Celebration</div>
+      <nav class="top-nav">
+        <div class="badge">Luna & Todd Birthday Celebration</div>
         <div class="nav-links">
-          <a href="#party">The Party</a>
+          <a href="#details">Details</a>
           <a href="#schedule">Schedule</a>
-          <a href="#rsvp" class="rsvp-button-small">RSVP Now</a>
+          <a href="#rsvp">RSVP</a>
         </div>
       </nav>
 
-      <div class="hero" id="party">
-        <div class="hero-card">
-          <div class="eyebrow">Two birthdays. One epic celebration.</div>
-          <h1>
-            Luna’s 10th Birthday
-            <span>& Todd’s 37th Birthday</span>
-          </h1>
+      <section class="hero">
+        <div class="hero-panel luna-hero">
+          <div class="kicker">Kawaii party zone</div>
+          <h1>Luna</h1>
+          <div class="age">10th Birthday</div>
           <p class="hero-copy">
-            Come for the fun. Stay for the vibes.
+            Pink lettering, jumping castle energy, party games, sweet treats, and cute axolotl-style fun everywhere.
           </p>
+          <div class="deco-row">
+            <span class="deco">🩷</span>
+            <span class="deco">🫧</span>
+            <span class="deco">⭐</span>
+            <span class="deco">🦎</span>
+            <span class="deco">🎈</span>
+          </div>
         </div>
 
-        <div class="joke">
-          <small>Luna says:</small>
-          How do you plan a space party?<br>
-          You Plan-et
+        <div class="hero-panel todd-hero">
+          <div class="kicker">Firepit night zone</div>
+          <h1 class="todd-title">Todd</h1>
+          <div class="age">37th Birthday</div>
+          <p class="hero-copy">
+            Fire, BBQ tacos, craft beer, ginger beer on tap, red and white selection, and good vibes.
+          </p>
+          <div class="deco-row">
+            <span class="deco">🔥</span>
+            <span class="deco">🌮</span>
+            <span class="deco">🍺</span>
+            <span class="deco">🍷</span>
+            <span class="deco">✨</span>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div class="details-bar" id="schedule">
-        <div class="detail">
+      <section class="info-strip" id="schedule">
+        <div class="info-card">
           <strong>August 8th</strong>
           Party Day
         </div>
-        <div class="detail">
+        <div class="info-card">
           <strong>3PM</strong>
           Arrival
         </div>
-        <div class="detail">
+        <div class="info-card">
           <strong>5PM</strong>
           Dinner
         </div>
-        <div class="detail">
+        <div class="info-card">
           <strong>7PM</strong>
           Movie for Kids
         </div>
-      </div>
+      </section>
 
-      <div class="party-sections">
-        <div class="section-card luna-card">
+      <section class="details-grid" id="details">
+        <div class="card luna-card">
           <h2>Luna’s Fun</h2>
           <ul class="feature-list">
             <li><span class="icon">🏰</span> Jumping castle</li>
@@ -447,19 +566,25 @@
           </ul>
         </div>
 
-        <div class="section-card todd-card">
+        <div class="card todd-card">
           <h2>Todd’s Vibes</h2>
           <ul class="feature-list">
-            <li><span class="icon">🔥</span> Fire</li>
-            <li><span class="icon">🌮</span> BBQ tacos</li>
+            <li><span class="icon">🔥</span> Firepit and relaxed night vibes</li>
+            <li><span class="icon">🌮</span> BBQ tacos for dinner</li>
             <li><span class="icon">🍺</span> Craft and ginger beer on tap</li>
             <li><span class="icon">🍷</span> Red and White selection</li>
-            <li><span class="icon">⭐</span> Good vibes</li>
+            <li><span class="icon">⭐</span> Good vibes all round</li>
           </ul>
         </div>
-      </div>
+      </section>
 
-      <div class="rsvp-panel" id="rsvp">
+      <section class="joke-card">
+        <small>Luna says</small>
+        How do you plan a space party?<br>
+        You Plan-et
+      </section>
+
+      <section class="rsvp" id="rsvp">
         <h2>RSVP</h2>
         <p>
           Let us know who is coming, how many adults and kids are joining, and whether the kids are staying for movie night.
@@ -469,12 +594,17 @@
           Complete RSVP
         </a>
 
-        <div class="footer-note">
+        <div class="sleep-note">
           Welcome to bring a swag, or there is a caravan park across the road.
         </div>
+      </section>
+
+      <div class="footer">
+        Luna’s 10th Birthday & Todd’s 37th Birthday
       </div>
 
     </div>
-  </section>
+  </main>
 </body>
 </html>
+```
