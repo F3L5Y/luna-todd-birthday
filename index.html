@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Luna & Todd Birthday RSVP</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
+      background: #050505;
+      color: #ffffff;
+    }
+
+    .party-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffe3f1 0%, #ffd6ec 45%, #101010 45%, #050505 100%);
+      color: #ffffff;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .party-wrap {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 28px 20px 44px;
+      border-radius: 24px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 36px;
+    }
+
+    .logo {
+      color: #d93d82;
+      font-size: 18px;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 10px 16px;
+      border-radius: 999px;
+      box-shadow: 0 8px 24px rgba(217, 61, 130, 0.18);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      font-size: 13px;
+      text-transform: uppercase;
+      font-weight: 800;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-links a {
+      color: #1f1f1f;
+      text-decoration: none;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 9px 13px;
+      border-radius: 999px;
+    }
+
+    .nav-links .rsvp-button-small {
+      color: #ffffff;
+      background: #e84b91;
+      box-shadow: 0 8px 22px rgba(232, 75, 145, 0.35);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+      margin-bottom: 34px;
+    }
+
+    .hero-card {
+      background: rgba(255, 255, 255, 0.86);
+      color: #222222;
+      padding: 34px;
+      border-radius: 30px;
+      border: 3px solid rgba(232, 75, 145, 0.35);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card:before {
+      content: "♡ ★ ♡ ★ ♡";
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      color: rgba(232, 75, 145, 0.35);
+      font-size: 22px;
+      letter-spacing: 8px;
+    }
+
+    .eyebrow {
+      color: #e84b91;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      line-height: 0.95;
+      font-size: clamp(42px, 7vw, 82px);
+      color: #e84b91;
+      text-shadow: 3px 3px 0 #ffffff, 6px 6px 0 rgba(232, 75, 145, 0.18);
+    }
+
+    .hero h1 span {
+      color: #1f1f1f;
+      display: block;
+      font-size: clamp(30px, 4.2vw, 52px);
+      margin-top: 16px;
+      text-shadow: none;
+    }
+
+    .hero-copy {
+      color: #a52f68;
+      font-size: 22px;
+      line-height: 1.35;
+      margin: 22px 0 0;
+      font-weight: 800;
+    }
+
+    .joke {
+      background: #fff8fc;
+      border: 3px dashed #e84b91;
+      color: #d93d82;
+      border-radius: 30px;
+      padding: 26px;
+      font-size: 27px;
+      line-height: 1.25;
+      font-weight: 900;
+      text-align: center;
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.16);
+    }
+
+    .joke small {
+      display: block;
+      color: #a52f68;
+      font-size: 17px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .details-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .detail {
+      background: rgba(255, 255, 255, 0.92);
+      color: #1f1f1f;
+      border-radius: 18px;
+      padding: 18px 14px;
+      text-align: center;
+      border: 2px solid rgba(232, 75, 145, 0.3);
+      font-weight: 900;
+      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.14);
+    }
+
+    .detail strong {
+      display: block;
+      color: #e84b91;
+      font-size: 26px;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .party-sections {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      margin-bottom: 34px;
+    }
+
+    .section-card {
+      border-radius: 28px;
+      padding: 28px;
+      min-height: 270px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.22);
+    }
+
+    .luna-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #222222;
+      border: 3px solid rgba(232, 75, 145, 0.35);
+    }
+
+    .todd-card {
+      background: radial-gradient(circle at center, rgba(255, 126, 48, 0.25), rgba(0, 0, 0, 0.9) 60%);
+      border: 3px solid rgba(212, 150, 74, 0.65);
+      color: #f8e6c9;
+    }
+
+    .section-card h2 {
+      margin: 0 0 20px;
+      font-size: 34px;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .luna-card h2 {
+      color: #e84b91;
+    }
+
+    .todd-card h2 {
+      color: #e5b16c;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      line-height: 1.3;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .todd-card .feature-list li {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .icon {
+      font-size: 23px;
+      line-height: 1;
+    }
+
+    .rsvp-panel {
+      background: rgba(0, 0, 0, 0.9);
+      border: 3px solid rgba(232, 75, 145, 0.65);
+      border-radius: 34px;
+      padding: 36px 28px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+
+    .rsvp-panel h2 {
+      color: #ffffff;
+      text-align: center;
+      font-size: 48px;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .rsvp-panel p {
+      text-align: center;
+      color: #f6a5cb;
+      font-size: 19px;
+      font-weight: 800;
+      margin: 10px auto 26px;
+      max-width: 650px;
+      line-height: 1.45;
+    }
+
+    .rsvp-button {
+      display: inline-block;
+      text-decoration: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, #ff8abe, #e84b91);
+      color: #ffffff;
+      font-size: 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      padding: 18px 58px;
+      border-radius: 999px;
+      box-shadow: 0 14px 34px rgba(232, 75, 145, 0.35);
+      letter-spacing: 1px;
+      margin-bottom: 26px;
+    }
+
+    .rsvp-button:hover {
+      transform: translateY(-1px);
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid rgba(212, 150, 74, 0.5);
+      color: #f8e6c9;
+      padding: 20px;
+      border-radius: 18px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    @media (max-width: 850px) {
+      .party-page {
+        background: linear-gradient(180deg, #ffe3f1 0%, #ffd6ec 48%, #070707 48%, #050505 100%);
+      }
+
+      .nav {
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+
+      .hero,
+      .party-sections {
+        grid-template-columns: 1fr;
+      }
+
+      .details-bar {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-card {
+        padding: 26px;
+      }
+
+      .joke {
+        font-size: 23px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .party-page {
+        padding: 12px;
+      }
+
+      .party-wrap {
+        padding: 20px 10px 30px;
+      }
+
+      .details-bar {
+        grid-template-columns: 1fr;
+      }
+
+      .rsvp-panel {
+        padding: 28px 18px;
+      }
+
+      .rsvp-panel h2 {
+        font-size: 38px;
+      }
+
+      .rsvp-button {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 18px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <section class="party-page">
+    <div class="party-wrap">
+
+      <nav class="nav">
+        <div class="logo">Luna & Todd Birthday Celebration</div>
+        <div class="nav-links">
+          <a href="#party">The Party</a>
+          <a href="#schedule">Schedule</a>
+          <a href="#rsvp" class="rsvp-button-small">RSVP Now</a>
+        </div>
+      </nav>
+
+      <div class="hero" id="party">
+        <div class="hero-card">
+          <div class="eyebrow">Two birthdays. One epic celebration.</div>
+          <h1>
+            Luna’s 10th Birthday
+            <span>& Todd’s 37th Birthday</span>
+          </h1>
+          <p class="hero-copy">
+            Come for the fun. Stay for the vibes.
+          </p>
+        </div>
+
+        <div class="joke">
+          <small>Luna says:</small>
+          How do you plan a space party?<br>
+          You Plan-et
+        </div>
+      </div>
+
+      <div class="details-bar" id="schedule">
+        <div class="detail">
+          <strong>August 8th</strong>
+          Party Day
+        </div>
+        <div class="detail">
+          <strong>3PM</strong>
+          Arrival
+        </div>
+        <div class="detail">
+          <strong>5PM</strong>
+          Dinner
+        </div>
+        <div class="detail">
+          <strong>7PM</strong>
+          Movie for Kids
+        </div>
+      </div>
+
+      <div class="party-sections">
+        <div class="section-card luna-card">
+          <h2>Luna’s Fun</h2>
+          <ul class="feature-list">
+            <li><span class="icon">🏰</span> Jumping castle</li>
+            <li><span class="icon">🎮</span> Party games</li>
+            <li><span class="icon">🥤</span> Sparkling apple juice and coconut water</li>
+            <li><span class="icon">🍭</span> Party food: fruit, lollies, chips, etc</li>
+            <li><span class="icon">🍿</span> Movie night — bring PJ’s and a pillow</li>
+          </ul>
+        </div>
+
+        <div class="section-card todd-card">
+          <h2>Todd’s Vibes</h2>
+          <ul class="feature-list">
+            <li><span class="icon">🔥</span> Fire</li>
+            <li><span class="icon">🌮</span> BBQ tacos</li>
+            <li><span class="icon">🍺</span> Craft and ginger beer on tap</li>
+            <li><span class="icon">🍷</span> Red and White selection</li>
+            <li><span class="icon">⭐</span> Good vibes</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="rsvp-panel" id="rsvp">
+        <h2>RSVP</h2>
+        <p>
+          Let us know who is coming, how many adults and kids are joining, and whether the kids are staying for movie night.
+        </p>
+
+        <a class="rsvp-button" href="PASTE_YOUR_FORM_LINK_HERE" target="_blank">
+          Complete RSVP
+        </a>
+
+        <div class="footer-note">
+          Welcome to bring a swag, or there is a caravan park across the road.
+        </div>
+      </div>
+
+    </div>
+  </section>
+</body>
+</html>
